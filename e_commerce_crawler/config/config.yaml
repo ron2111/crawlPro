@@ -1,0 +1,24 @@
+
+
+crawler:
+  max_concurrent_requests: 10  # Reduced to avoid rate limiting
+  request_timeout: 30
+  max_retries: 3
+  requests_per_second: 1  # Reduced to avoid detection
+  headers:
+    User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+    Accept-Language: "en-US,en;q=0.5"
+    Accept-Encoding: "gzip, deflate, br"
+    Connection: "keep-alive"
+    Upgrade-Insecure-Requests: "1"
+  product_patterns:
+    - "/dp/"
+    - "/gp/product/"
+    - "/product/"
+    - "/products/"
+    - "/p/"  
+  output_file: "output/product_urls.json"
+  allowed_status_codes: [200, 301, 302, 307, 308]  # Allow redirects
+  respect_robots: true
+  use_proxy: false  # if need to use proxy -> true
